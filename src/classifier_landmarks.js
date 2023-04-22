@@ -10,6 +10,10 @@ const LABELS = {
 	landmarks_oceania: require('./landmarks/oceania.json').name,
 }
 
+console.log('RECOGNIZE_GPU', process.env.RECOGNIZE_GPU, typeof process.env.RECOGNIZE_GPU)
+/** Manual owerride, cause GPU is not used otherwise */
+process.env.RECOGNIZE_GPU = 'true'
+
 let tf, getPort, StaticServer
 let PUREJS = false
 if (process.env.RECOGNIZE_PUREJS === 'true') {

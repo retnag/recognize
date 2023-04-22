@@ -5,6 +5,10 @@ const _ = require('lodash')
 const rules = YAML.parse(fsSync.readFileSync(path.join(__dirname, 'rules.yml')).toString('utf8'))
 const { IMAGENET_CLASSES } = require('./efficientnet/classes')
 
+console.log('RECOGNIZE_GPU', process.env.RECOGNIZE_GPU, typeof process.env.RECOGNIZE_GPU)
+/** Manual owerride, cause GPU is not used otherwise */
+process.env.RECOGNIZE_GPU = 'true'
+
 let tf, getPort, StaticServer
 let PUREJS = false
 if (process.env.RECOGNIZE_PUREJS === 'true') {

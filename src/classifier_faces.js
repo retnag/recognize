@@ -1,6 +1,10 @@
 const path = require('path')
 const fs = require('fs/promises')
 
+console.log('RECOGNIZE_GPU', process.env.RECOGNIZE_GPU, typeof process.env.RECOGNIZE_GPU)
+/** Manual owerride, cause GPU is not used otherwise */
+process.env.RECOGNIZE_GPU = 'true'
+
 let tf, faceapi, Jimp
 let PUREJS = false
 if (process.env.RECOGNIZE_PUREJS === 'true') {

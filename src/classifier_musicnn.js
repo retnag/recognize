@@ -4,6 +4,10 @@ const YAML = require('yaml')
 const _ = require('lodash')
 const rules = YAML.parse(fsSync.readFileSync(path.join(__dirname, 'musicnn_rules.yml')).toString('utf8'))
 
+console.log('RECOGNIZE_GPU', process.env.RECOGNIZE_GPU, typeof process.env.RECOGNIZE_GPU)
+/** Manual owerride, cause GPU is not used otherwise */
+process.env.RECOGNIZE_GPU = 'true'
+
 let tf, getPort, StaticServer
 let PUREJS = false
 if (process.env.RECOGNIZE_PUREJS === 'true') {

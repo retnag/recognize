@@ -3,6 +3,10 @@ const fsSync = require('fs')
 const exifer = require('exifer')
 const gps = require('@exifer/gps')
 
+console.log('RECOGNIZE_GPU', process.env.RECOGNIZE_GPU, typeof process.env.RECOGNIZE_GPU)
+/** Manual owerride, cause GPU is not used otherwise */
+process.env.RECOGNIZE_GPU = 'true'
+
 if (process.argv.length < 3) throw new Error('Incorrect arguments: node classify.js ...<IMAGE_FILES> | node classify.js -')
 
 /**
